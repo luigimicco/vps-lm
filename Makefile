@@ -20,3 +20,22 @@ nginxpm:
 	docker volume create nginxpm_data
 	docker volume create nginxpm_letsencrypt
 	$(call docker_rebuild,"nginxpm","docker/nginxpm")
+# Gotify
+gotify:
+	docker volume create gotify_data
+	$(call docker_rebuild,"gotify","docker/gotify")
+# WatchTower
+watchtower:
+	$(call docker_rebuild,"watchtower","docker/watchtower")
+# Glances
+glances:
+	$(call docker_rebuild,"glances","docker/glances")
+# IT Tools
+it-tools:
+	$(call docker_rebuild,"it-tools","docker/it-tools")
+# Passbolt
+passbolt:
+	docker volume create passbolt_db
+	docker volume create passbolt_gpg
+	docker volume create passbolt_jwt
+	$(call docker_rebuild,"passbolt","docker/passbolt")	
