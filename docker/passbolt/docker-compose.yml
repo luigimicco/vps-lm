@@ -25,6 +25,7 @@ services:
       MYSQL_PASSWORD: "P4ssb0lt"
     networks:
       - passbolt_stack
+      - reverse-proxy
     volumes:
       - passbolt_db:/var/lib/mysql
   passbolt:
