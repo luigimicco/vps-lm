@@ -39,3 +39,8 @@ passbolt:
 	docker volume create passbolt_gpg
 	docker volume create passbolt_jwt
 	$(call docker_rebuild,"passbolt","docker/passbolt")	
+# OpenCloud
+opencloud:
+	docker volume create opencloud_config
+	docker volume create opencloud_data
+	$(call docker_rebuild,"opencloud","docker/opencloud")		
