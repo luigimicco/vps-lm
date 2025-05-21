@@ -18,7 +18,7 @@ services:
     command: ["-c", "opencloud init || true; opencloud server"]
     environment:
       # change to the public domain name of your OpenCloud instance with protocol and port
-      OC_URL: https://localhost:9200
+      OC_URL: https://89.168.31.129:9200
       OC_LOG_LEVEL: info
       # uncomment if you do not want use SSL between the reverse proxy and OpenCloud
       # PROXY_TLS: "false"
