@@ -31,7 +31,7 @@ services:
       # demo users
       # IDM_CREATE_DEMO_USERS: "true"    
     ports:
-      - "9200:9200"
+      - 9200:9200
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro"
       - opencloud_data:/var/lib/opencloud
