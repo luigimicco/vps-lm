@@ -12,53 +12,32 @@ services:
   traefik:
     container_name: opencloud
     hostname: opencloud
-    image: traefik:v3.3.1
-    # release notes: https://github.com/traefik/traefik/releases
+    image: opencloudeu/opencloud-rolling:latest
     networks:
       - reverse-proxy
-    command:
-      - "--log.level=ERROR"
-      # letsencrypt configuration
-      - "--certificatesResolvers.http.acme.email=luigi.micco@gmail.com"
-      - "--certificatesResolvers.http.acme.storage=/certs/acme.json"
-      - "--certificatesResolvers.http.acme.httpChallenge.entryPoint=http"
-      - "--certificatesResolvers.http.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
-      # enable dashboard
-      - "--api.dashboard=true"
-      # define entrypoints
-      - "--entryPoints.http.address=:80"
-      - "--entryPoints.http.http.redirections.entryPoint.to=https"
-      - "--entryPoints.http.http.redirections.entryPoint.scheme=https"
-      - "--entryPoints.https.address=:443"
-      # change default timeouts for long-running requests
-      # this is needed for webdav clients that do not support the TUS protocol
-      - "--entryPoints.https.transport.respondingTimeouts.readTimeout=12h"
-      - "--entryPoints.https.transport.respondingTimeouts.writeTimeout=12h"
-      - "--entryPoints.https.transport.respondingTimeouts.idleTimeout=3m"
-      # docker provider (get configuration from container labels)
-      - "--providers.docker.endpoint=unix:///var/run/docker.sock"
-      - "--providers.docker.exposedByDefault=false"
-      # access log
-      - "--accessLog=true"
-      - "--accessLog.format=json"
-      - "--accessLog.fields.headers.names.X-Request-Id=keep"
+    command: ["-c", "opencloud init || true; opencloud server"]
+    environment:
+      # change to the public domain name of your OpenCloud instance with protocol and port
+      OC_URL: https://localhost:9200
+      OC_LOG_LEVEL: info
+      # uncomment if you do not want use SSL between the reverse proxy and OpenCloud
+      # PROXY_TLS: "false"
+      # INSECURE: needed if OpenCloud is using self generated certificates
+      OC_INSECURE: "true"
+      # basic auth (not recommended, but needed for eg. WebDav clients that do not support OpenID Connect)
+      PROXY_ENABLE_BASIC_AUTH: "false"
+      # admin user password
+      IDM_ADMIN_PASSWORD: "admin" # this overrides the admin password from the configuration file
+      # demo users
+      # IDM_CREATE_DEMO_USERS: "true"    
     ports:
-      - 80:80
-      - 443:443
+      - "9200:9200"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro"
       - opencloud_data:/var/lib/opencloud
       - opencloud_config:/etc/opencloud
       # - "certs:/certs"
     labels:
-      - "traefik.enable=false"
-       # defaults to admin:admin
-      - "traefik.http.middlewares.traefik-auth.basicauth.users=admin:$$apr1$$4vqie50r$$YQAmQdtmz5n9rEALhxJ4l."
-      - "traefik.http.routers.traefik.entrypoints=https"
-      - "traefik.http.routers.traefik.rule=Host(`traefik.opencloud.test`)"
-      - "traefik.http.routers.traefik.middlewares=traefik-auth"
-      - "traefik.http.routers.traefik.tls.certresolver=http"
-      - "traefik.http.routers.traefik.service=api@internal"
       - "com.centurylinklabs.watchtower.enable=true"
     logging:
       driver: local
