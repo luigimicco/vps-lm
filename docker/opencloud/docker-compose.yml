@@ -110,9 +110,6 @@ services:
       aliasgroup1: https://wopiserver.luigimicco.it:443
       DONT_GEN_SSL_CERT: "YES"
       extra_params: |
-        --o:ssl.enable=true \
-        --o:ssl.ssl_verification=true \
-        --o:ssl.termination=true \
         --o:welcome.enable=false \
         --o:net.frame_ancestors=opencloud.luigimicco.it
       username: admin
