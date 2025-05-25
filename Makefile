@@ -43,5 +43,5 @@ passbolt:
 opencloud:
 	docker volume create opencloud_config
 	docker volume create opencloud_data
-	docker volume create opencloud_apps
+# docker volume create opencloud_apps
 	$(call docker_rebuild,"opencloud","docker/opencloud")		

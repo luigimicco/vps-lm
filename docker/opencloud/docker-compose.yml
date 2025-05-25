@@ -39,7 +39,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro"
       - opencloud_data:/var/lib/opencloud
       - opencloud_config:/etc/opencloud
-      - opencloud_apps:/var/lib/opencloud/web/assets/apps
+      # - opencloud_apps:/var/lib/opencloud/web/assets/apps
       # - "certs:/certs"
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
@@ -76,7 +76,7 @@ services:
   #   entrypoint:
   #     - /bin/sh
   #   command: ["-c", "cp -R /usr/share/nginx/html/external-sites/ /apps"]    
-  
+
   # importer-init:
   #   image: opencloudeu/web-extensions:importer-1.0.0
   #   user: root
