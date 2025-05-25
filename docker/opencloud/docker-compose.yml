@@ -47,17 +47,17 @@ services:
       driver: local
     restart: unless-stopped
     
-    depends_on:
-      drawio-init:
-        condition: service_completed_successfully
-      externalsites-init:
-        condition: service_completed_successfully   
-      importer-init:
-        condition: service_completed_successfully  
-      jsonviewer-init:
-        condition: service_completed_successfully   
-      unzip-init:
-        condition: service_completed_successfully
+    # depends_on:
+    #   drawio-init:
+    #     condition: service_completed_successfully
+    #   externalsites-init:
+    #     condition: service_completed_successfully   
+    #   importer-init:
+    #     condition: service_completed_successfully  
+    #   jsonviewer-init:
+    #     condition: service_completed_successfully   
+    #   unzip-init:
+    #     condition: service_completed_successfully
 
   drawio-init:
     image: opencloudeu/web-extensions:draw-io-1.0.0
