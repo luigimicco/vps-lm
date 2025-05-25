@@ -19,7 +19,7 @@ services:
       - reverse-proxy
     command: ["-c", "opencloud init || true; opencloud server"]
     environment:
-      PROXY_HTTP_ADDR: "0.0.0.0"
+      # PROXY_HTTP_ADDR: "0.0.0.0"
       # change to the public domain name of your OpenCloud instance with protocol and port
       OC_URL: https://opencloud.luigimicco.it
       OC_LOG_LEVEL: info
