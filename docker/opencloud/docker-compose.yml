@@ -105,7 +105,7 @@ services:
     image: collabora/code:25.04.2.1.1
     # release notes: https://www.collaboraonline.com/release-notes/
     networks:
-      opencloud-net:
+      - reverse-proxy
     environment:
       aliasgroup1: https://wopiserver.luigimicco.it:443
       DONT_GEN_SSL_CERT: "YES"
