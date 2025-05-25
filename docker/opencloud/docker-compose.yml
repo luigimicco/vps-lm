@@ -9,14 +9,17 @@ volumes:
     external: true
 
 services:
-  traefik:
+  opencloud:
     container_name: opencloud
     hostname: opencloud
     image: opencloudeu/opencloud-rolling:latest
+    entrypoint:
+      - /bin/sh
     networks:
       - reverse-proxy
     command: ["-c", "opencloud init || true; opencloud server"]
     environment:
+      PROXY_HTTP_ADDR: "0.0.0.0:9200"
       # change to the public domain name of your OpenCloud instance with protocol and port
       OC_URL: https://89.168.31.129:9200
       OC_LOG_LEVEL: info
