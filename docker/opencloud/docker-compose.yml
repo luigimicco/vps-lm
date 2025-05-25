@@ -39,10 +39,67 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro"
       - opencloud_data:/var/lib/opencloud
       - opencloud_config:/etc/opencloud
+      - opencloud_apps:/var/lib/opencloud/web/assets/apps
       # - "certs:/certs"
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
     logging:
       driver: local
     restart: unless-stopped
+    
+    depends_on:
+      drawio-init:
+        condition: service_completed_successfully
+      externalsites-init:
+        condition: service_completed_successfully   
+      importer-init:
+        condition: service_completed_successfully  
+      jsonviewer-init:
+        condition: service_completed_successfully   
+      unzip-init:
+        condition: service_completed_successfully
 
+  drawio-init:
+    image: opencloudeu/web-extensions:draw-io-1.0.0
+    user: root
+    volumes:
+      - opencloud_apps:/apps
+    entrypoint:
+      - /bin/sh
+    command: ["-c", "cp -R /usr/share/nginx/html/draw-io/ /apps"]
+
+  externalsites-init:
+    image: opencloudeu/web-extensions:external-sites-1.0.0
+    user: root
+    volumes:
+      - opencloud_apps:/apps
+    entrypoint:
+      - /bin/sh
+
+    command: ["-c", "cp -R /usr/share/nginx/html/external-sites/ /apps"]    
+  importer-init:
+    image: opencloudeu/web-extensions:importer-1.0.0
+    user: root
+    volumes:
+      - opencloud_apps:/apps
+    entrypoint:
+      - /bin/sh
+    command: [ "-c", "cp -R /usr/share/nginx/html/importer/ /apps" ]    
+
+  jsonviewer-init:
+    image: opencloudeu/web-extensions:json-viewer-1.0.0
+    user: root
+    volumes:
+      - opencloud_apps:/apps
+    entrypoint:
+      - /bin/sh
+    command: ["-c", "cp -R /usr/share/nginx/html/json-viewer/ /apps"]
+
+  unzip-init:
+    image: opencloudeu/web-extensions:unzip-1.0.2
+    user: root
+    volumes:
+      - opencloud_apps:/apps
+    entrypoint:
+      - /bin/sh
+    command: ["-c", "cp -R /usr/share/nginx/html/unzip/ /apps"]    
