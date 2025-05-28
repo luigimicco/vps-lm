@@ -47,5 +47,5 @@ opencloud:
 	$(call docker_rebuild,"opencloud","docker/opencloud")		
 # NextCloud
 nextcloud:
-	docker volume create nextcloud_data
+	docker volume create nextcloud_aio_mastercontainer
 	$(call docker_rebuild,"nextcloud-aio-mastercontainer","docker/nextcloud")		
