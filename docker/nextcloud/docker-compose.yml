@@ -11,8 +11,8 @@ services:
     image: nextcloud/all-in-one:latest
     init: true
     restart: unless-stopped
-    hostname: nextcloud
-    container_name: nextcloud
+    hostname: nextcloud-aio-mastercontainer
+    container_name: nextcloud-aio-mastercontainer
     ports:
       - 11000:11000
     volumes:

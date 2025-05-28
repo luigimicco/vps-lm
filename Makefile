@@ -48,4 +48,4 @@ opencloud:
 # NextCloud
 nextcloud:
 	docker volume create nextcloud_data
-	$(call docker_rebuild,"nextcloud","docker/nextcloud")		
+	$(call docker_rebuild,"nextcloud-aio-mastercontainer","docker/nextcloud-aio-mastercontainer")		
