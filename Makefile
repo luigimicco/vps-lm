@@ -45,3 +45,7 @@ opencloud:
 	docker volume create opencloud_data
 	docker volume create opencloud_apps
 	$(call docker_rebuild,"opencloud","docker/opencloud")		
+# NextCloud
+nextcloud:
+	docker volume create nextcloud_data
+	$(call docker_rebuild,"nextcloud","docker/nextcloud")		
