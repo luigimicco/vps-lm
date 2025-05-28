@@ -11,9 +11,9 @@ services:
     image: nextcloud/all-in-one:latest
     init: true
     restart: always
-    container_name: nextcloud-aio-mastercontainer
+    container_name: nextcloud
     ports:
-      - 8080:8080
+      - 11000:11000
     volumes:
       - nextcloud_data:/mnt/docker-aio-config
       - /var/run/docker.sock:/var/run/docker.sock:ro
