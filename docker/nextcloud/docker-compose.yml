@@ -21,5 +21,7 @@ services:
       - APACHE_PORT=6789
       - APACHE_IP_BINDING=0.0.0.0
     labels:
-      - "com.centurylinklabs.watchtower.enable=true"         
+      - "com.centurylinklabs.watchtower.enable=true"  
+    networks:
+      - reverse-proxy       
     
