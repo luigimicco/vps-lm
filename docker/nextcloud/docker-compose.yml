@@ -11,10 +11,10 @@ services:
     image: nextcloud/all-in-one:latest
     init: true
     restart: unless-stopped
-    hostname: nextcloud-aio-mastercontainer
     container_name: nextcloud-aio-mastercontainer
     ports:
-      - 11000:11000
+##      - 80:80 # Can be removed when running behind a web server or reverse proxy
+      - 9028:8080
     volumes:
       - nextcloud_aio_mastercontainer:/mnt/docker-aio-config
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -22,3 +22,10 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"      
     networks:
       - reverse-proxy
+    environment:      
+      # APACHE_PORT: 11000 # Is needed when running behind a web server or reverse proxy
+      APACHE_PORT: 9028
+      APACHE_IP_BINDING: 89.168.31.129 # Should be set when running behind a web server or reverse proxy
+      NEXTCLOUD_DATADIR: /home/foo/docker/nextcloud-20240614/data
+      SKIP_DOMAIN_VALIDATION: 1
+      TRUSTED_DOMAIN: sub-domain-tld      
