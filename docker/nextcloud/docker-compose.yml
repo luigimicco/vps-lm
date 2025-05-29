@@ -13,8 +13,7 @@ services:
     restart: unless-stopped
     container_name: nextcloud-aio-mastercontainer
     ports:
-##      - 80:80 # Can be removed when running behind a web server or reverse proxy
-      - 9028:8080
+      - 11000:8080
     volumes:
       - nextcloud_aio_mastercontainer:/mnt/docker-aio-config
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -23,8 +22,7 @@ services:
     networks:
       - reverse-proxy
     environment:      
-      # APACHE_PORT: 11000 # Is needed when running behind a web server or reverse proxy
-      APACHE_PORT: 9028
+      APACHE_PORT: 11000 # Is needed when running behind a web server or reverse proxy
       APACHE_IP_BINDING: 89.168.31.129 # Should be set when running behind a web server or reverse proxy
       NEXTCLOUD_DATADIR: /home/foo/docker/nextcloud-20240614/data
       SKIP_DOMAIN_VALIDATION: 1
