@@ -18,7 +18,7 @@ services:
     ports:
       - 8080:8080 # change the port on the left side if it's already in use on your host system.
     environment:
-      - APACHE_PORT=8080
+      - APACHE_PORT=11000
       - APACHE_IP_BINDING=89.168.31.129
     labels:
       - "com.centurylinklabs.watchtower.enable=true"  
