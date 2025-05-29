@@ -7,21 +7,17 @@ networks:
     external: true
 
 services:
-  nextcloud-aio-mastercontainer:
+  nextcloud:
     image: nextcloud/all-in-one:latest
-    container_name: nextcloud-aio-mastercontainer
-    init: true
     restart: unless-stopped
-    network_mode: bridge # add to the same network as docker run would do
-    ports:
-      - 8080:8080
-    environment: # Is needed when using any of the options below
-      APACHE_PORT: 11000 # Is needed when running behind a web server or reverse proxy (like Apache, Nginx, Caddy, Cloudflare Tunnel and else). See https://github.com/nextcloud/all-in-one/blob/main/reverse-proxy.md
-      APACHE_IP_BINDING: 89.168.31.129 # Should be set when running behind a web server or reverse proxy (like Apache, Nginx, Caddy, Cloudflare Tunnel and else) that is running on the same host. See https://github.com/nextcloud/all-in-one/blob/main/reverse-proxy.md
+    container_name: nextcloud-aio-mastercontainer
     volumes:
       - nextcloud_aio_mastercontainer:/mnt/docker-aio-config
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /srv/storage/nextcloud/data:/mnt/ncdata
+    ports:
+      - 6789:8080 # change the port on the left side if it's already in use on your host system.
+    environment:
+      - APACHE_PORT=11000
     labels:
       - "com.centurylinklabs.watchtower.enable=true"         
     
