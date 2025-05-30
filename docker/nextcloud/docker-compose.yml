@@ -14,7 +14,7 @@ services:
     ports:
       - '8080:8080'
       - '11000:11000'
-      - '443:443'
+      - '4443:443'
     environment:
       - APACHE_PORT=11000
       - APACHE_IP_BINDING=0.0.0.0
