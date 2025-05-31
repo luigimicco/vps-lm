@@ -18,7 +18,7 @@ services:
     environment:
       # - SKIP_DOMAIN_VALIDATION=true
       - APACHE_PORT=11000
-      - APACHE_IP_BINDING=89.168.31.129
+      - APACHE_IP_BINDING=0.0.0.0
       - NEXTCLOUD_DATADIR=/mnt/data-nextcloud
       - APACHE_ADDITIONAL_NETWORK=""
     volumes:
