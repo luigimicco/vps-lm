@@ -14,6 +14,7 @@ services:
     ports:
       - '8080:8080'
       - '4443:443'
+      - '11000:11000'      
     environment:
       - SKIP_DOMAIN_VALIDATION=true
       - APACHE_PORT=11000
