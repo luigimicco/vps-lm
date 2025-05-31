@@ -16,7 +16,7 @@ services:
       - '4443:443'
       - '11000:11000'      
     environment:
-      - SKIP_DOMAIN_VALIDATION=true
+      # - SKIP_DOMAIN_VALIDATION=true
       - APACHE_PORT=11000
       - APACHE_IP_BINDING=89.168.31.129
       - NEXTCLOUD_DATADIR=/mnt/data-nextcloud
