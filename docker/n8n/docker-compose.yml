@@ -21,3 +21,5 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
     volumes:
       - n8n_data:/home/node/.n8n
+    networks:
+      - reverse-proxy      
