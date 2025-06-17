@@ -9,10 +9,8 @@ define docker_rebuild
 	docker compose -p $(1) -f $(2)/docker-compose.yml up -d
 endef
 # Initialization
-newinit:
-	docker network create --driver bridge --network host reverse-proxy2
 init:
-	docker network create --driver bridge --network host reverse-proxy
+	docker network create --driver bridge reverse-proxy
 # Portainer
 portainer:
 	docker volume create portainer_data
@@ -51,3 +49,7 @@ opencloud:
 nextcloud:
 	docker volume create nextcloud_aio_mastercontainer
 	$(call docker_rebuild,"nextcloud-aio-mastercontainer","docker/nextcloud")		
+# N8n
+n8n:
+	docker volume create n8n_data
+	$(call docker_rebuild,"n8n","docker/n8n")	
