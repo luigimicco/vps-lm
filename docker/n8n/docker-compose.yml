@@ -17,6 +17,7 @@ services:
       - DB_TYPE=sqlite
       - N8N_BASIC_AUTH_USER=admin
       - N8N_BASIC_AUTH_PASSWORD=YourSecurePassword
+      - N8N_RUNNERS_ENABLED=true
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
     volumes:
