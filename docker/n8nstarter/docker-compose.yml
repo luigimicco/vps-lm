@@ -106,7 +106,7 @@ services:
     image: qdrant/qdrant
     hostname: qdrant
     container_name: qdrant
-    networks: ['demo']
+    networks: ['reverse-proxy']
     restart: unless-stopped
     ports:
       - 6333:6333
