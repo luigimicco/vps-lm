@@ -53,3 +53,10 @@ nextcloud:
 n8n:
 	docker volume create n8n_data
 	$(call docker_rebuild,"n8n","docker/n8n")	
+
+n8nstarter:
+	docker volume create n8n_storage
+	docker volume create postgres_storage
+	docker volume create ollama_storage
+	docker volume create qdrant_storage
+	$(call docker_rebuild,"n8n","docker/n8nstarter")	
