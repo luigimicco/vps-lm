@@ -64,6 +64,6 @@ n8n:
 
 # Coolify
 coolify:
-	docker volume create coolify-db
-	docker volume create coolify-redis
+	docker volume create coolify-data
+	docker volume create coolify-postgres
 	$(call docker_rebuild,"coolify")		
