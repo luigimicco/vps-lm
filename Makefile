@@ -1,6 +1,6 @@
 # Function: Docker Rebuild
 # [execute: down, remove, pull, build, up]
-# $(call docker_rebuild,"stack_name"
+# $(call docker_rebuild,"stack_name")
 define docker_rebuild
 	docker compose -p $(1) -f docker/$(1)/docker-compose.yml down && \
 	docker compose -p $(1) -f docker/$(1)/docker-compose.yml rm -f && \
@@ -65,5 +65,5 @@ n8n:
 # Coolify
 coolify:
 	docker volume create coolify-db
-	doocker volume create coolify-redis
+	docker volume create coolify-redis
 	$(call docker_rebuild,"coolify")		
