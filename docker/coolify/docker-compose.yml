@@ -141,7 +141,7 @@ services:
     container_name: coolify-realtime
     restart: always
     ports:
-      - "${SOKETI_PORT:-6001}:6001"
+      - "6001:6001"
     environment:
       SOKETI_DEBUG: "false"
       SOKETI_DEFAULT_APP_ID: ""
