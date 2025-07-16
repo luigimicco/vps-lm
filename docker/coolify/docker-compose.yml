@@ -2,6 +2,12 @@ networks:
   reverse-proxy:
     external: true
 
+volumes:
+  coolify-db:
+    external: true
+  coolify-redis:
+    external: true
+
 services:
   coolify:
     image: "ghcr.io/coollabsio/coolify:latest"
