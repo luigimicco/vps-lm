@@ -14,8 +14,8 @@ RUN apt update \
     tar \
     vim \
     unzip \
-    sudo \
     systemctl \
+    sudo \
     systemd \
     ufw \
     openssh-server \
