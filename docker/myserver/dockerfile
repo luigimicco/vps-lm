@@ -16,8 +16,8 @@ RUN apt update \
     unzip \
 #    systemctl \
     sudo \
-    systemd \
-    ufw \
+#    systemd \
+#    ufw \
     openssh-server \
   && apt clean all \
   && apt autoremove
