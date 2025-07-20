@@ -17,9 +17,6 @@ RUN apt update \
   && apt clean all \
   && apt autoremove
 
-RUN useradd -ms /bin/bash root
-USER root
-
 # Install dockerize for config files
 RUN curl -sfL $(curl -s https://api.github.com/repos/powerman/dockerize/releases/latest \
   | grep -i /dockerize-$(uname -s)-$(uname -m)\" | cut -d\" -f4) \
