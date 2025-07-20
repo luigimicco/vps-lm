@@ -3,8 +3,6 @@ networks:
     external: true
 
 volumes:
-  coolify-server:
-    external: true
   coolify-data:
     external: true
   coolify-postgres:
@@ -51,17 +49,3 @@ services:
     networks:
       - reverse-proxy
 
-  ubuntu:
-    container_name: ubuntu
-    image: ubuntu
-    restart: always
-    command: ["sleep","infinity"] 
-    build:
-      context: .
-      dockerfile: ./dockerfile    
-    ports:
-     - "8000:8000"    
-    volumes:
-      - coolify-server:/etc/ssh/       
-    networks:
-      - reverse-proxy    

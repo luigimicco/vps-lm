@@ -61,7 +61,6 @@ n8n:
 	docker volume create qdrant_storage
 	$(call docker_rebuild,"n8n")	
 
-
 # Coolify
 coolify:
 	docker volume create coolify-server
@@ -69,3 +68,7 @@ coolify:
 	docker volume create coolify-postgres
 	$(call docker_rebuild,"coolify")		
 
+# MyServer
+myserver:
+	docker volume create myserver-data
+	$(call docker_rebuild,"myserver")		

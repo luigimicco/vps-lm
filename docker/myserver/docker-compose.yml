@@ -1,0 +1,24 @@
+networks:
+  reverse-proxy:
+    external: true
+
+volumes:
+  myserver-data:
+    external: true
+
+services:
+
+  myserver:
+    container_name: myserver
+    image: ubuntu
+    restart: always
+    command: ["sleep","infinity"] 
+    build:
+      context: .
+      dockerfile: ./dockerfile    
+    ports:
+     - "8000:8000"    
+    volumes:
+      - myserver-data:/etc/ssh/       
+    networks:
+      - reverse-proxy    
