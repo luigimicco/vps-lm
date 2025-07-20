@@ -3,6 +3,8 @@ networks:
     external: true
 
 volumes:
+  coolify-server:
+    external: true
   coolify-data:
     external: true
   coolify-postgres:
