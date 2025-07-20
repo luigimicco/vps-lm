@@ -2,8 +2,8 @@
 # [execute: down, remove, pull, build, up]
 # $(call docker_rebuild,"stack_name")
 define docker_rebuild
-	docker compose -p $(1) -f docker/$(1)/docker-compose.yml down && \
-	docker compose -p $(1) -f docker/$(1)/docker-compose.yml rm -f --remove-orphans && \
+	docker compose -p $(1) -f docker/$(1)/docker-compose.yml down --remove-orphans && \
+	docker compose -p $(1) -f docker/$(1)/docker-compose.yml rm -f && \
 	docker compose -p $(1) -f docker/$(1)/docker-compose.yml pull && \
 	docker compose -p $(1) -f docker/$(1)/docker-compose.yml build --no-cache && \
 	docker compose -p $(1) -f docker/$(1)/docker-compose.yml up -d
