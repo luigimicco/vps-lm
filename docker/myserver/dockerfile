@@ -14,7 +14,7 @@ RUN apt update \
     tar \
     vim \
     unzip \
-    systemctl \
+#    systemctl \
     sudo \
     systemd \
     ufw \
