@@ -26,6 +26,7 @@ RUN curl -sfL $(curl -s https://api.github.com/repos/powerman/dockerize/releases
   | grep -i /dockerize-$(uname -s)-$(uname -m)\" | cut -d\" -f4) \
   | install /dev/stdin /usr/local/bin/dockerize
 
-RUN sudo systemctl enable ssh && sudo systemctl start ssh
+RUN sudo systemctl enable ssh
+RUN sudo systemctl start ssh
 
 USER root
