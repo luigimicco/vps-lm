@@ -16,6 +16,7 @@ RUN apt update \
     unzip \
     sudo \
     systemctl \
+    systemd \
     ufw \
     openssh-server \
   && apt clean all \
