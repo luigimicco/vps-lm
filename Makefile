@@ -86,3 +86,9 @@ coolify:
 myserver:
 	docker volume create myserver-data
 	$(call docker_rebuild,"myserver")		
+
+
+# Uptime Kuma
+uptime-kuma:
+	docker volume create uptime-kuma_data
+	$(call docker_rebuild,"uptime-kuma")
