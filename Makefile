@@ -92,3 +92,8 @@ myserver:
 uptime-kuma:
 	docker volume create uptime-kuma_data
 	$(call docker_rebuild,"uptime-kuma")
+
+# Papra
+papra:
+	docker volume create papra_data
+	$(call docker_rebuild,"papra")	
