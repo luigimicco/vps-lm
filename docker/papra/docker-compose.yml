@@ -12,6 +12,8 @@ services:
     container_name: papra
     hostname: papra
     user: 1001:1001
+    ports:
+      - "1221:1221"    
     restart: unless-stopped
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
