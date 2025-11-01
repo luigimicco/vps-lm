@@ -8,20 +8,18 @@ networks:
 
 services:
   app:
-    image: ghcr.io/papra-hq/papra:latest-root
+    image: ghcr.io/papra-hq/papra:latest
     container_name: papra
-    hostname: papra
-    ports:
-      - "1221:1221"    
     restart: unless-stopped
+    ports:
+      - 1221:1221
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
     environment:
       - APP_BASE_URL=https://papra.luigimicco.it
       - CLIENT_BASE_URL=https://papra.luigimicco.it
       - SERVER_BASE_URL=https://papra.luigimicco.it
-      - AUTH_SECRET=kJzxL7qCqsOUawlDTjWHxLrcyBJXVa9DZ7N3r02INNIkqcIK
-      - AUTH_IS_REGISTRATION_ENABLED=true
+      - AUTH_SECRET=KfKrkBned0A4RYr1JJJ93IGeuCACtuGvKCbVh4ByNR5XA54i
       - DOCUMENTS_OCR_LANGUAGES=eng,ita
     volumes:
       - papra_data:/app/app-data

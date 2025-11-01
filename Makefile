@@ -94,6 +94,7 @@ uptime-kuma:
 	$(call docker_rebuild,"uptime-kuma")
 
 # Papra
+#       - AUTH_IS_REGISTRATION_ENABLED=true
 papra:
 	docker volume create papra_data
 	$(call docker_rebuild,"papra")	
