@@ -20,6 +20,7 @@ services:
       - CLIENT_BASE_URL=https://papra.luigimicco.it
       - SERVER_BASE_URL=https://papra.luigimicco.it
       - AUTH_SECRET=KfKrkBned0A4RYr1JJJ93IGeuCACtuGvKCbVh4ByNR5XA54i
+      - AUTH_IS_REGISTRATION_ENABLED=false
       - DOCUMENTS_OCR_LANGUAGES=eng,ita
     volumes:
       - papra_data:/app/app-data
