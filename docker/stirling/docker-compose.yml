@@ -1,5 +1,13 @@
 volumes:
-  papra_data:
+  stirling_data:
+    external: true
+  stirling_configs:
+    external: true
+  stirling_files:
+    external: true
+  stirling_logs:
+    external: true
+  stirling_pipeline:
     external: true
 
 networks:
