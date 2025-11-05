@@ -71,9 +71,11 @@ nextcloud:
 n8n:
 	docker volume create n8n_storage
 	docker volume create postgres_storage
-	docker volume create ollama_storage
-	docker volume create qdrant_storage
 	$(call docker_rebuild,"n8n")	
+
+ollama:
+	docker volume create ollama_storage
+	$(call docker_rebuild,"ollama")	
 
 # Coolify
 coolify:
