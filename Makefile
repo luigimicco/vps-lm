@@ -100,3 +100,12 @@ uptime-kuma:
 papra:
 	docker volume create papra_data
 	$(call docker_rebuild,"papra")	
+
+# Stirling-PDF
+stirling:
+	docker volume create stirling_data
+	docker volume create stirling_configs
+	docker volume create stirling_files
+	docker volume create stirling_logs
+	docker volume create stirling_pipeline
+	$(call docker_rebuild,"stirling")		
