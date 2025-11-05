@@ -30,7 +30,7 @@ services:
     labels:
       - "com.centurylinklabs.watchtower.enable=true"      
     environment:
-      - DISABLE_ADDITIONAL_FEATURES=false
+      - DISABLE_ADDITIONAL_FEATURES=true
       - LANGS=en_GB      
     networks:
       - reverse-proxy      
