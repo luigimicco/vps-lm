@@ -11,6 +11,7 @@ services:
     image: ghcr.io/papra-hq/papra:latest
     container_name: papra
     restart: unless-stopped
+    user: 1001:1001
     ports:
       - 1221:1221
     labels:
