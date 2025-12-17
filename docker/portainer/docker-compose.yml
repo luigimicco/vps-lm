@@ -12,6 +12,21 @@ services:
     container_name: portainer
     hostname: portainer
     restart: unless-stopped
+    # Add logging limits
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    # Add security options
+    security_opt:
+      - no-new-privileges:true    
+    # Add healthcheck
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "--quiet", "https://portainer.luigimicco.it"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
     volumes:

@@ -34,6 +34,24 @@ x-n8n: &service-n8n
     - N8N_SMTP_PASS
     - N8N_SMTP_SENDER 
     - OLLAMA_HOST=ollama:11434
+    # Pruning
+    - EXECUTIONS_DATA_PRUNE=true
+    - EXECUTIONS_DATA_MAX_AGE=336
+    - EXECUTIONS_DATA_SAVE_ON_ERROR=all
+    - EXECUTIONS_DATA_SAVE_ON_SUCCESS=all
+    - EXECUTIONS_DATA_SAVE_ON_PROGRESS=true
+    - EXECUTIONS_DATA_SAVE_MANUAL_EXECUTIONS=true
+    # Timezone
+    - TZ=Europe/Rome
+  healthcheck:
+    test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider https://n8n.luigimicco.it/healthz || exit 1"]
+    interval: 10s
+    timeout: 5s
+    retries: 5
+  deploy:
+    resources:
+      limits:
+        memory: 2G
   env_file:
     - .env
 

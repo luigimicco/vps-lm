@@ -14,6 +14,18 @@ services:
     container_name: nginxpm
     hostname: nginxpm
     restart: unless-stopped
+    environment:
+      - TZ=Europe/Rome
+      - DISABLE_IPV6=true
+    healthcheck:
+      test: ["CMD", "/bin/check-health"]
+      interval: 10s
+      timeout: 3s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
     volumes:

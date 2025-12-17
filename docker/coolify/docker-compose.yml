@@ -25,7 +25,7 @@ services:
     environment:
       DATABASE_URL: postgres://coolify:coolify@coolify-db:5432/coolify
       REDIS_HOST: coolify-redis
-      APP_KEY: base64:C+HGh+8xUUcrN7STAL++2K/kKwEG8XyF84VEiGjcKpc=
+      APP_KEY: "${APP_KEY}"
     networks:
       - reverse-proxy
 
