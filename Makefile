@@ -117,5 +117,5 @@ stirling:
 
 # OnlyOffice
 onlyoffice:
-	$(call create_volumes,onlyoffice_data)
-	$(call docker_rebuild,onlyoffice)			
+	docker volume create onlyoffice_data
+	$(call docker_rebuild,"onlyoffice")			
