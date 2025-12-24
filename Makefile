@@ -118,4 +118,4 @@ stirling:
 # OnlyOffice
 onlyoffice:
 	$(call create_volumes,onlyoffice_data)
-	$(call docker_rebuild,"onlyoffice")			
+	$(call docker_rebuild,onlyoffice)			
