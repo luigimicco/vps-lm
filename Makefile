@@ -1,5 +1,5 @@
 # Global Settings
-.PHONY: init remove portainer nginxpm gotify watchtower glances it-tools passbolt opencloud nextcloud n8n ollama coolify myserver uptime-kuma papra stirling
+.PHONY: init remove portainer nginxpm gotify watchtower glances it-tools passbolt opencloud nextcloud n8n ollama coolify myserver uptime-kuma papra stirling onlyoffice
 
 # Function: Docker Rebuild
 # [execute: down, remove, pull, build, up]
@@ -114,3 +114,8 @@ papra:
 stirling:
 	$(call create_volumes,stirling_data stirling_configs stirling_files stirling_logs stirling_pipeline)
 	$(call docker_rebuild,"stirling")		
+
+# OnlyOffice
+onlyoffice:
+	$(call create_volumes,onlyoffice_data)
+	$(call docker_rebuild,"onlyoffice")			
