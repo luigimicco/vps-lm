@@ -114,3 +114,8 @@ papra:
 stirling:
 	$(call create_volumes,stirling_data stirling_configs stirling_files stirling_logs stirling_pipeline)
 	$(call docker_rebuild,"stirling")		
+
+# Onlyoffice
+onlyoffice:
+	$(call create_volumes,onlyoffice_data onlyofficepg_data onlyofficelog_data onlyofficecache_data onlyofficeexample_data onlyofficefonts_data)
+	$(call docker_rebuild,"onlyoffice")		
