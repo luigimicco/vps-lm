@@ -20,8 +20,8 @@ services:
       #- JWT_HEADER=Authorization
       #- JWT_IN_BODY=true
     ports:
-      - '80:80'
-      - '443:443'
+      - '8081:8081'
+      - '4443:4443'
     healthcheck:
       test: ["CMD", "curl", "-f", "http://onlyoffice.luigimicco.it/info/info.json"]
       interval: 30s
@@ -31,6 +31,8 @@ services:
     stdin_open: true
     restart: always
     stop_grace_period: 60s
+    networks:
+      - reverse-proxy    
     volumes:
        - onlyoffice_data:/var/www/onlyoffice/Data
        - onlyofficelog_data:/var/log/onlyoffice
@@ -44,6 +46,8 @@ services:
     restart: always
     expose:
       - '5672'
+    networks:
+      - reverse-proxy      
     healthcheck:
       test: ["CMD", "rabbitmq-diagnostics", "status"]
       interval: 10s
@@ -61,6 +65,8 @@ services:
     restart: always
     expose:
       - '5432'
+    networks:
+      - reverse-proxy      
     volumes:
       - onlyofficepg_data:/var/lib/postgresql
     healthcheck:
