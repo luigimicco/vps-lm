@@ -20,7 +20,7 @@ services:
       #- JWT_HEADER=Authorization
       #- JWT_IN_BODY=true
     ports:
-      - '8081:8080'
+      - '8081:80'
       - '4443:443'
     healthcheck:
       test: ["CMD", "curl", "-f", "http://onlyoffice.luigimicco.it/info/info.json"]
